@@ -1,0 +1,65 @@
+{% extends "base_head.html" %}
+{% block body %}
+<div class="navbar_con">
+		<div class="navbar clearfix">
+			<div class="subnav_con fl">
+				<h1>全部商品分类</h1>
+				<span></span>
+				<ul class="subnav">
+					<li><a href="/goods/list1_1_1" class="fruit">新鲜水果</a></li>
+					<li><a href="/goods/list2_1_1" class="seafood">海鲜水产</a></li>
+					<li><a href="/goods/list3_1_1" class="meet">猪牛羊肉</a></li>
+					<li><a href="/goods/list4_1_1" class="egg">禽类蛋品</a></li>
+					<li><a href="/goods/list5_1_1" class="vegetables">新鲜蔬菜</a></li>
+					<li><a href="/goods/list6_1_1" class="ice">速冻食品</a></li>
+				</ul>
+			</div>
+			<ul class="navlist fl">
+				<li><a href="/goods">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="">手机生鲜</a></li>
+				<li class="interval">|</li>
+				<li><a href="">抽奖</a></li>
+			</ul>
+		</div>
+	</div>
+{% if list == 1 %}
+    <div class="breadcrumb">
+		<a href="/">全部分类</a>
+		<span>></span>
+		<a href="/goods/list{{ goodtype.id }}_1_1">{{goodtype.ttitle}}</a>
+        {% if isDetail %}
+        <span>></span>
+		<a href="">商品详情</a>
+        {% endif %}
+	</div>
+{% endif %}
+
+{%  block detail %}
+{%  endblock detail %}
+
+<div class="main_wrap clearfix">
+		<div class="l_wrap fl clearfix">
+			<div class="new_goods">
+				<h3>新品推荐</h3>
+				<ul>
+                    {% for g in newgood %}
+					<li>
+						<a href="/goods/{{g.id}}"><img src="/static/{{g.gpic}}"></a>
+						<h4><a href="/goods/{{g.id}}">{{g.gtitle}}</a></h4>
+						<div class="prize">￥{{g.gprice}}</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+{% block list %}
+{% endblock list %}
+
+</div>
+
+{% endblock body %}
+
+{% block foot %}
+
+{% endblock foot %}
